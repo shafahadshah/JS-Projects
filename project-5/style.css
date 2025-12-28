@@ -1,0 +1,49 @@
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background: #020617;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+
+.heart {
+    position: fixed;
+    width: 14px;
+    height: 14px;
+    transform: rotate(45deg);
+    animation: heartFloat 1.2s ease-out forwards;
+    pointer-events: none;
+}
+
+
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: inherit;
+}
+
+.heart::before {
+    left: -7px;
+}
+
+.heart::after {
+    top: -7px;
+}
+
+
+@keyframes heartFloat {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) rotate(45deg) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(var(--x), var(--y)) rotate(45deg) scale(1.6);
+    }
+}

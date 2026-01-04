@@ -1,0 +1,196 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Notification */
+.notification {
+  position: fixed;
+  top: 20px;
+  right: -300px;
+  background: linear-gradient(135deg, #43e97b, #38f9d7);
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-weight: bold;
+  transition: 0.4s;
+  z-index: 1000;
+}
+
+/* Layout */
+.container {
+  width: 95%;
+  max-width: 1000px;
+  display: flex;
+  gap: 20px;
+}
+
+/* Panels */
+.panel {
+  flex: 1;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 20px;
+  color: white;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.hidden {
+  display: none;
+}
+
+/* Form */
+form input, form select, form button {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  border: none;
+}
+
+form button {
+  background: linear-gradient(135deg, #ff512f, #dd2476);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+form button:hover {
+  transform: scale(1.05);
+}
+
+/* ---------- ANIMATED SCROLL AREA ---------- */
+.task-scroll {
+  position: relative;
+  max-height: 65vh;
+  overflow: hidden;
+}
+
+/* fade masks */
+.task-scroll::before,
+.task-scroll::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 30px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.task-scroll::before {
+  top: 0;
+  background: linear-gradient(to bottom, #0f2027, transparent);
+}
+
+.task-scroll::after {
+  bottom: 0;
+  background: linear-gradient(to top, #0f2027, transparent);
+}
+
+.task-list {
+  max-height: 65vh;
+  overflow-y: auto;
+  padding-right: 10px;
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+.task-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.task-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.task-list::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #43e97b, #38f9d7);
+  border-radius: 10px;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from { opacity: 0.6; }
+  to { opacity: 1; }
+}
+
+/* Tasks */
+.task {
+  background: rgba(0,0,0,0.35);
+  border-radius: 15px;
+  padding: 15px;
+  margin-bottom: 12px;
+  animation: slideRight 0.45s cubic-bezier(.25,.8,.25,1);
+}
+
+@keyframes slideRight {
+  from {
+    transform: translateX(120%) rotateY(25deg);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.task.high { border-left: 6px solid red; }
+.task.medium { border-left: 6px solid yellow; }
+.task.low { border-left: 6px solid limegreen; }
+
+.task h3 {
+  margin: 0;
+}
+
+.task small {
+  opacity: 0.8;
+}
+
+/* Buttons */
+.actions {
+  margin-top: 10px;
+}
+
+.actions button {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  margin-right: 6px;
+  font-weight: bold;
+}
+
+.complete {
+  background: #43e97b;
+}
+
+.edit {
+  background: #00c6ff;
+}
+
+.delete {
+  background: #ff4b2b;
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+}

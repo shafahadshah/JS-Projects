@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Modern To-Do App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="notification" id="notify"></div>
+
+<div class="container">
+
+  <!-- LEFT -->
+  <div class="panel form-panel">
+    <h2>➕ Add Task</h2>
+    <form id="taskForm">
+      <input type="text" id="title" placeholder="Task title..." required>
+      <input type="datetime-local" id="dueDate">
+
+      <select id="priority">
+        <option value="low">Low Priority</option>
+        <option value="medium">Medium Priority</option>
+        <option value="high">High Priority</option>
+      </select>
+
+      <button type="submit">Save Task</button>
+    </form>
+  </div>
+
+  <!-- RIGHT (hidden initially) -->
+  <div class="panel task-panel hidden" id="taskPanel">
+    <h2>📋 Tasks</h2>
+
+    <!-- scroll wrapper -->
+    <div class="task-scroll">
+      <div id="taskList" class="task-list"></div>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
